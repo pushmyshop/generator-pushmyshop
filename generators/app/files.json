@@ -1,5 +1,8 @@
 {
     "static": [
+        ".angular-cli.json",
+        ".editorconfig",
+        ".gitignore",
         "README.md",
         "karma.conf.js",
         "package-lock.json",

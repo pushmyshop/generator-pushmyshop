@@ -1,7 +1,5 @@
 var Generator = require('yeoman-generator');
 var path = require('path');
-const { spawn } = require('child_process');
-
 var files = require('./files.json');
 
 module.exports = class extends Generator {
@@ -55,7 +53,7 @@ module.exports = class extends Generator {
   }
 
   runNpm() {
-    const npm = spawn(
+    this.spawnCommand(
       'npm',
       ['install'],
       {
@@ -63,14 +61,10 @@ module.exports = class extends Generator {
           this.options.destWrite,
           this.options.compagnyName)
       });
-
-    npm.stdout.on('data', (data) => {
-      console.log(`${data}`);
-    });
   }
 
   buildProdApplication()  {
-    const ng = spawn(
+    this.spawnCommand(
       'ng',
       ['build','--prod'],
       {
@@ -78,9 +72,5 @@ module.exports = class extends Generator {
           this.options.destWrite,
           this.options.compagnyName)
       });
-
-    ng.stdout.on('data', (data) => {
-      console.log(`${data}`);
-    });
   }
 };
