@@ -1,0 +1,26 @@
+{
+  "name": "generator-pushmyshop",
+  "version": "1.0.0",
+  "description": "Generator for create app client to pushmyshop",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pushmyshop/generator-pushmyshop.git"
+  },
+  "keywords": [
+    "yeoman",
+    "generator",
+    "pushmyshop"
+  ],
+  "author": "pushmyshop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pushmyshop/generator-pushmyshop/issues"
+  },
+  "homepage": "https://github.com/pushmyshop/generator-pushmyshop#readme",
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}
