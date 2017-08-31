@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CustomerService } from './service/customer.service';
@@ -27,6 +28,7 @@ export const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
