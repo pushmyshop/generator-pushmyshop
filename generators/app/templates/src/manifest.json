@@ -1,0 +1,22 @@
+{
+    "dir": "ltr",
+    "lang": "fr",
+    "name": "Mo Pizza",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "./",
+    "short_name": "Mo Pizza",
+    "theme_color": "#393939",
+    "description": "",
+    "orientation": "any",
+    "background_color": "#ffffff",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+      {
+        "src": "/assets/images/pizza.png",
+        "sizes": "256x256"
+      }
+    ]
+  }
+  
