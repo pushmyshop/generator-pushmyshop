@@ -30,6 +30,6 @@
         "src/environments/environment.ts"
     ],
     "templates": [
-        "src/app/_app.component.ts"
+   
     ]
 }
