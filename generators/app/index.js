@@ -52,7 +52,7 @@ module.exports = class extends Generator {
     };
   }
 
-  runNpm() {
+  install() {
     this.spawnCommand(
       'npm',
       ['install'],
@@ -61,12 +61,9 @@ module.exports = class extends Generator {
           this.options.destWrite,
           this.options.compagnyName)
       });
-  }
-
-  buildProdApplication()  {
     this.spawnCommand(
       'ng',
-      ['build','--prod'],
+      ['build', '--prod'],
       {
         cwd: path.join(
           this.options.destWrite,
