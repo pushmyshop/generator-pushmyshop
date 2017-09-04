@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../service/customer.service';
+import { CompagnyService } from '../service/compagny.service';
+import { ProductService } from '../service/product.service';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +10,18 @@ import { CustomerService } from '../service/customer.service';
 })
 export class ProductComponent implements OnInit {
   title : string;
-  constructor(private customerService : CustomerService) { }
+  products : Product[];
+
+  constructor(private compagnyService : CompagnyService, private productService : ProductService) {
+    this.products = []; 
+  }
 
   ngOnInit() {
-    this.customerService.get(123).then(customer => {
-      this.title = customer.nameOfCompagny;
+    this.compagnyService.get().then(compagny => {
+      this.title = compagny.name;
+    })
+    this.productService.get().then(products => {
+      this.products = products;
     })
   }
 

@@ -1,7 +1,21 @@
 <header>
-  <h2>{{title}}</h2>
-  <p>Made with App Layout Elements</p>
+  <div class="headerContent">
+    <h2>{{title}}</h2>
+    <p>Made with App Layout Elements</p>
+  </div>
 </header>
+
+<section *ngFor="let product of products" >
+  <div class="container ">
+    <div>
+      <img src="http://www.speedrabbitpizza.com/binary_resources/10240721">
+    </div>
+    <div>
+      <h3>{{product.name}} - {{product.price}} €</h3>
+      <p>{{product.desc}}</p>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="container ">

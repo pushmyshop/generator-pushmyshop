@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CustomerService } from './service/customer.service';
+import { CompagnyService } from './service/compagny.service';
+import { ProductService } from './service/product.service';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -30,7 +31,10 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [CustomerService],
+  providers: [
+    CompagnyService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
