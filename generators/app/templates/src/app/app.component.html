@@ -2,25 +2,23 @@
   <div id="backgroundRearLayer"></div>
   <div id="backgroundFrontLayer"></div>
 </div>
-<div id="contentContainer">
-  
-    
-    <nav class="toolbar">
 
+<nav class="toolbar">
 
-
-      <div class="tabs ">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a routerLink="/cart" class="menu-icon" >
-          <img src="/assets/images/pizza-box.svg" />
-        </a>
-      </div>
+  <div class="tabs ">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a routerLink="/cart" class="menu-icon" >
+      <img src="/assets/images/pizza-box.svg" />
+    </a>
+  </div>
     
 </nav>
 
-<router-outlet></router-outlet>
+<div id="contentContainer">
+  <router-outlet></router-outlet>
+</div>
 
     
 
