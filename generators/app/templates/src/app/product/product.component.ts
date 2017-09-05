@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompagnyService } from '../service/compagny.service';
 import { ProductService } from '../service/product.service';
 import { CartService } from '../service/cart.service';
 import { Product } from '../model/product';
+import { PopinComponent } from '../popin/popin.component';
 
 @Component({
   selector: 'app-product',
@@ -12,6 +13,9 @@ import { Product } from '../model/product';
 export class ProductComponent implements OnInit {
   title : string;
   products : Product[];
+  lastProductAdded : Product;
+
+  @ViewChild('productAdded') productAdded : PopinComponent;
 
   constructor(private compagnyService : CompagnyService
     , private productService : ProductService
@@ -29,7 +33,13 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product){
-    console.log(product);
-    this.cartService.addProduct(product).then(cart => console.log(JSON.stringify(cart)));
+    this.cartService.addProduct(product).then(cart => {
+      this.lastProductAdded = product;
+      this.productAdded.open();
+    });
+  }
+
+  closeProductAdded(){
+    this.productAdded.close();
   }
 }

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import { PopinComponent } from './popin/popin.component';
 
 
 import { CompagnyService } from './service/compagny.service';
@@ -27,7 +28,8 @@ export const routes: Routes = [
   declarations: [
     AppComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    PopinComponent
   ],
   imports: [
     BrowserModule,
