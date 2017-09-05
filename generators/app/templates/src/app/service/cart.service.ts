@@ -3,16 +3,26 @@ import { Http, Headers } from "@angular/http";
 import { Cart } from '../model/cart';
 import { Product } from '../model/product';
 import { environment } from '../../environments/environment';
+
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import "rxjs/add/operator/map";
 
 @Injectable()
 export class CartService {
 
-  current : Observable<Cart>;
+  current : BehaviorSubject<Cart> = new BehaviorSubject<Cart>(null);
   private headers = new Headers( { 'Content-Type': 'application/json' } );
   
   constructor(private http : Http) { }
+
+  init() : void{
+    let currentCart : Cart = JSON.parse(localStorage.getItem('cart'));
+    if(currentCart){
+      return this.current.next(currentCart);
+    }
+  }
 
   addProduct(product : Product) : Promise<Cart> {
     return this.getCart().then(cart => {
@@ -29,31 +39,33 @@ export class CartService {
   }
 
   private addProductTo(cart: Cart, product : Product): Promise<Cart>{
-    this.current = this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/product', JSON.stringify(product), { headers: this.headers } )
+    return this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/product', JSON.stringify(product), { headers: this.headers } )
     .map( res => {
       let cart = res.json() as Cart;
       localStorage.setItem('cart', JSON.stringify(cart));
+      this.current.next(cart);
       return cart;
     })
+    .toPromise()
     .catch( error => {
       console.error( 'Could not add product to cart', error );
-      return Observable.throw( error.message || error );
+      return Promise.reject( error.message || error );
     } );
-    return this.current.toPromise();
   }
 
   private create() : Promise<Cart> {
-    this.current = this.http.post(environment.compagnyUrl+'/carts', {})
+    return this.http.post(environment.compagnyUrl+'/carts', {})
       .map( res => {
         let cart = res.json() as Cart;
         localStorage.setItem('cart', JSON.stringify(cart));
+        this.current.next(cart);
         return cart;
       })
+      .toPromise()
       .catch( error => {
         console.error( 'Could not create new cart', error );
-        return Observable.throw( error.message || error );
+        return Promise.reject( error.message || error );
       } );
-      return this.current.toPromise();
   }
 
 }
