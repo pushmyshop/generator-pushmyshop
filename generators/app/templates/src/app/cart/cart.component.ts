@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Cart} from '../model/cart'
+import {Product} from '../model/product'
 import {CartService} from '../service/cart.service'
 
 
@@ -18,6 +19,10 @@ export class CartComponent implements OnInit {
     ngOnInit() {
       this.cartService.current.subscribe(cart => this.cart = cart);
       this.cartService.init();
+    }
+
+    removeProduct(product : Product) : void {
+      this.cartService.removeProduct(product);
     }
 
 }

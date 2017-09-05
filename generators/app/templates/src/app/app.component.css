@@ -1,6 +1,55 @@
-.menu-icon {
+.toolbar {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;-ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    background-color: rgba(255, 255, 255, 0.95);
+
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 50px;
+    z-index: 1000;
+  }
+  
+  .tabs {
+    height: 100%;display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+  
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+  }
+  
+  .tabs > a {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;-ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;-ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 12px 16px 12px;
+  }
+#contentContainer{
+  padding-top: 50px;
+  z-index: 100;
+}
+
+.menu-icon svg {
     width : 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 .cart-badge {

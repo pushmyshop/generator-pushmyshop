@@ -30,6 +30,23 @@ export class CartService {
     })
   }
 
+  removeProduct(product : Product): Promise<Cart>{
+    let cart : Cart = JSON.parse(localStorage.getItem('cart'));
+    return this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/product/'+product.id, JSON.stringify(product), { headers: this.headers } )
+    .map( res => {
+      let cart = res.json() as Cart;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      this.current.next(cart);
+      return cart;
+    })
+    .toPromise()
+    .catch( error => {
+      console.error( 'Could not add product to cart', error );
+      return Promise.reject( error.message || error );
+    } );
+  }
+
+
   private getCart(): Promise<Cart> {
     let currentCart : Cart = JSON.parse(localStorage.getItem('cart'));
     if(!currentCart){
