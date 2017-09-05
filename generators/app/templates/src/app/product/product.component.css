@@ -74,6 +74,15 @@
     line-height: 1.5;
   }
   
+  .addToCart svg{
+    width : 50px;
+    height: 50px;
+  }
+  .addToCart:hover{
+    background-color: #5A5959;
+    fill: #FFFFFF;
+  }
+  
   @media (max-width: 600px) {
     .container {
         display: -ms-flexbox;

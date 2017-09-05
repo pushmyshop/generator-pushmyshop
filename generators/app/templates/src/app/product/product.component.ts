@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompagnyService } from '../service/compagny.service';
 import { ProductService } from '../service/product.service';
+import { CartService } from '../service/cart.service';
 import { Product } from '../model/product';
 
 @Component({
@@ -12,7 +13,9 @@ export class ProductComponent implements OnInit {
   title : string;
   products : Product[];
 
-  constructor(private compagnyService : CompagnyService, private productService : ProductService) {
+  constructor(private compagnyService : CompagnyService
+    , private productService : ProductService
+    , private cartService : CartService) {
     this.products = []; 
   }
 
@@ -25,4 +28,8 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  addToCart(product){
+    console.log(product);
+    this.cartService.addProduct(product).then(cart => console.log(JSON.stringify(cart)));
+  }
 }
