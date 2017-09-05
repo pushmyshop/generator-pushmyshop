@@ -27,7 +27,6 @@
 
 .item {
   padding: 20px 30px;
-  height: 190px;
   display: flex;
 }
 
@@ -48,21 +47,15 @@
   cursor: pointer;
   width: 18px;
   height: 17px;
-  background: url("/assets/images/delete-icn.svg") no-repeat center;
   margin-right: 20px;
 }
 
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  display: inline-block;
-  background: url('/assets/images/twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
-  cursor: pointer;
+.delete-btn svg {
+  fill: #BDC7CF;
+}
+
+.delete-btn svg:hover {
+  fill: #FF0000;
 }
 
 .is-active {
@@ -83,12 +76,15 @@
 .image {
   margin-right: 50px;
 }
+.image img {
+  width: 150px;
+}
 
 /* Product Description */
 .description {
   padding-top: 10px;
   margin-right: 60px;
-  width: 115px;
+  width: 300px;
 }
 
 .description span {
@@ -105,40 +101,6 @@
   font-weight: 300;
   margin-top: 8px;
   color: #86939E;
-}
-
-/* Product Quantity */
-.quantity {
-  padding-top: 20px;
-  margin-right: 60px;
-}
-.quantity input {
-  -webkit-appearance: none;
-  border: none;
-  text-align: center;
-  width: 32px;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-}
-
-button[class*=btn] {
-  width: 30px;
-  height: 30px;
-  background-color: #E1E8EE;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-}
-.minus-btn img {
-  margin-bottom: 3px;
-}
-.plus-btn img {
-  margin-top: 2px;
-}
-button:focus,
-input:focus {
-  outline:0;
 }
 
 /* Total Price */
@@ -167,13 +129,9 @@ input:focus {
     width: 50%;
   }
   .image,
-  .quantity,
   .description {
     width: 100%;
     text-align: center;
     margin: 6px 0;
-  }
-  .buttons {
-    margin-right: 20px;
   }
 }
