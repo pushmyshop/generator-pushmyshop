@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -34,7 +37,10 @@ export const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    FormsModule,
+    DateTimePickerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     CompagnyService,

@@ -46,6 +46,20 @@ export class CartService {
     } );
   }
 
+  validateCart(cart : Cart): Promise<Cart>{
+    return this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/checkout', JSON.stringify(cart), { headers: this.headers } )
+    .map( res => {
+      let cart = res.json() as Cart;
+      localStorage.removeItem('cart');
+      return cart;
+    })
+    .toPromise()
+    .catch( error => {
+      console.error( 'Could not checkout cart', error );
+      return Promise.reject( error.message || error );
+    } );
+  }
+
 
   private getCart(): Promise<Cart> {
     let currentCart : Cart = JSON.parse(localStorage.getItem('cart'));

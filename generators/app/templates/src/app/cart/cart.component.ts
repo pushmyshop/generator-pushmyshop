@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {Cart} from '../model/cart'
 import {Product} from '../model/product'
 import {CartService} from '../service/cart.service'
+import {PopinComponent} from '../popin/popin.component'
 
 
 @Component({
@@ -14,15 +15,36 @@ export class CartComponent implements OnInit {
 
   cart : Cart;
   
-    constructor(private cartService : CartService){ }
+  @ViewChild('reservation') reservation : PopinComponent;
+  @ViewChild('validation') validation : PopinComponent;
+
+  constructor(private cartService : CartService){ }
+
+  ngOnInit() {
+    this.cartService.current.subscribe(cart => this.cart = cart);
+    this.cartService.init();
+  }
+
+  removeProduct(product : Product) : void {
+    this.cartService.removeProduct(product);
+  }
+
+  validerReservation(){
+    this.cartService.validateCart(this.cart).then(cart =>{
+      this.closeReservation();
+      this.openValidation();
+    })
+  }
   
-    ngOnInit() {
-      this.cartService.current.subscribe(cart => this.cart = cart);
-      this.cartService.init();
-    }
+  openValidation(){
+    this.validation.open();
+  }
+  
+  openReservation(){
+    this.reservation.open();
+  }
 
-    removeProduct(product : Product) : void {
-      this.cartService.removeProduct(product);
-    }
-
+  closeReservation(){
+    this.reservation.close();
+  }
 }
