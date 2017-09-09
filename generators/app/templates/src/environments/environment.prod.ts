@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  compagnyId : 4,
+  compagnyUrl : 'http://localhost:8080/api/compagnies/4',
 };
