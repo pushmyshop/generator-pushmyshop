@@ -12,7 +12,42 @@
           "match": "regex"
         }
       }
-    }
-   
+    },
+  "external": {
+    "urls": [{
+      "url": "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+    }]
+  } ,
+  "dynamic": {
+    "group": [{
+      "name": "company",
+      "urls": {
+        ".*/api/compagnies/(0|[1-9][0-9]*)$": {
+          "match": "regex"
+        }
+      },
+      "cache": {
+        "optimizeFor": "performance",
+        "strategy": "lru",
+        "maxAgeMs": 3600000,
+        "maxEntries": 2
+      }
+    },
+      {
+        "name": "products",
+        "urls": {
+          ".*/api/compagnies/(0|[1-9][0-9]*)/products$": {
+            "match": "regex"
+          }
+        },
+        "cache": {
+          "optimizeFor": "freshness",
+          "strategy": "fifo",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2,
+          "networkTimeoutMs": 1000
+        }
+      }
+    ]
+  }
 }
- 
