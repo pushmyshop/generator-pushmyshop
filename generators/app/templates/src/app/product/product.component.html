@@ -5,56 +5,26 @@
   </div>
 </header>
 
-<section *ngFor="let product of products" >
-  <div class="container ">
-    <div>
-      <img src="http://pizza-lebidule.fr/wp-content/uploads/2016/06/pizza_tomate.png">
-    </div>
-    <div>
-      <h3>{{product.name}} - {{product.price}} €</h3>
-      <p>{{product.desc}}</p>
-      <button class="addToCart" (click)='addToCart(product)'>
+<div class="product-list">
+  <div class="item" *ngFor="let product of products">
+    <div class="buttons">
+      <a class="addToCart" (click)="addToCart(product)">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" x="0px" y="0px" viewBox="0 0 50 50" ><g id="surface1"><path style=" " d="M 25 3 C 12.863281 3 3 12.863281 3 25 C 3 37.136719 12.863281 47 25 47 C 37.136719 47 47 37.136719 47 25 C 47 12.863281 37.136719 3 25 3 Z M 25 5 C 36.058594 5 45 13.941406 45 25 C 45 36.058594 36.058594 45 25 45 C 13.941406 45 5 36.058594 5 25 C 5 13.941406 13.941406 5 25 5 Z M 24 14 L 24 24 L 14 24 L 14 26 L 24 26 L 24 36 L 26 36 L 26 26 L 36 26 L 36 24 L 26 24 L 26 14 Z "></path></g></svg>
-      </button>
+      </a>
     </div>
-  </div>
-</section>
 
-<section>
-  <div class="container ">
-    <div>
-      <img src="http://www.maboutiqueregimedukan.com/publicmedia/formatted/150/20/fr/pizza_regime_dukan.jpg;h=300,w=400.jpg">
+    <div class="image">
+      <img src="http://pizza-lebidule.fr/wp-content/uploads/2016/06/pizza_tomate.png" alt="" />
     </div>
-    <div>
-      <h3>Harlem Margherita</h3>
-      <p>Sauce Tomate, Mozzarella.</p>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="container ">
-    <div>
-      <img src="http://www.toques2cuisine.com/wp-content/uploads/2015/01/PIZZA-DUO-5-838.jpg">
+    <div class="description">
+      <span class="product-name">{{product.name}}</span>
+      <span>{{product.desc}}</span>
     </div>
-    <div>
-      <h3>Catch Arena</h3>
-      <p>Sauce Tomate, Mozzarella, Boeuf Epicé, Emincé de Poulet, Merguez, Sauce Barbecue </p>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="container ">
-    <div>
-      <img src="http://www.speedrabbitpizza.com/binary_resources/10240704">
-    </div>
-    <div>
-      <h3>French Burger</h3>
-      <p>Sauce Tomate, Mozzarella, Crème Fraîche, Moutarde à l'Ancienne, Viande Hachée, Champignons, Double Tomates Fraîches </p>
-    </div>
+    <div class="total-price">{{product.price}} €</div>
   </div>
-</section>
+</div>
 
 <popin class="popup" #productAdded>
   <h2>Ajouté au panier !</h2>
