@@ -16,6 +16,7 @@ import { ProductService } from './service/product.service';
 import { CartService } from './service/cart.service';
 
 import { Routes, RouterModule } from '@angular/router';
+import {PushService} from "./service/push.service";
 
 
 export const routes: Routes = [
@@ -45,7 +46,8 @@ export const routes: Routes = [
   providers: [
     CompagnyService,
     ProductService,
-    CartService
+    CartService,
+    PushService,
   ],
   bootstrap: [AppComponent]
 })

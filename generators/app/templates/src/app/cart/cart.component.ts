@@ -4,6 +4,7 @@ import {Cart} from '../model/cart'
 import {Product} from '../model/product'
 import {CartService} from '../service/cart.service'
 import {PopinComponent} from '../popin/popin.component'
+import {PushService} from "../service/push.service";
 
 
 @Component({
@@ -14,11 +15,11 @@ import {PopinComponent} from '../popin/popin.component'
 export class CartComponent implements OnInit {
 
   cart : Cart;
-  
+
   @ViewChild('reservation') reservation : PopinComponent;
   @ViewChild('validation') validation : PopinComponent;
 
-  constructor(private cartService : CartService){ }
+  constructor(private cartService : CartService, private pushService: PushService){ }
 
   ngOnInit() {
     this.cartService.current.subscribe(cart => this.cart = cart);
@@ -33,13 +34,14 @@ export class CartComponent implements OnInit {
     this.cartService.validateCart(this.cart).then(cart =>{
       this.closeReservation();
       this.openValidation();
+      this.pushService.subscribeToPush(this.cart);
     })
   }
-  
+
   openValidation(){
     this.validation.open();
   }
-  
+
   openReservation(){
     this.reservation.open();
   }
