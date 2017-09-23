@@ -14,7 +14,6 @@ header {
   }
 
 #header_titre {
-  height: calc(100vh - 64px);
   backgrond-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -25,7 +24,7 @@ header {
     font-weight: 300;
     margin: 0;
   }
-  
+
 #header_titre > p {
     font-size: 32px;
 }

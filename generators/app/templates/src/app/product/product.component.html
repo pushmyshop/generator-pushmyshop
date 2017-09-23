@@ -2,7 +2,15 @@
   <img [src]="compagny.image" id="header_image" width=100%/>
   <div id="header_titre">
       <h2>{{compagny.title}}</h2>
-      <p>Made with App Layout Elements</p>
+      <p>{{compagny.subTitle}}</p>
+      <p>
+        {{compagny.addressLine1}} <br/>
+        <span *ngIf="compagny.addressLine2">{{compagny.addressLine2}} <br/></span>
+        <span *ngIf="compagny.addressLine3">{{compagny.addressLine3}} <br/></span>
+        {{compagny.postalCode}} - {{compagny.town}} <br/>
+        {{compagny.telephoneNumber}} <br/>
+        {{compagny.emailAdress}}
+      </p>
   </div>
 </header>
 

@@ -13,7 +13,7 @@ import { PopinComponent } from '../popin/popin.component';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  
+
   products: Product[];
   compagny: Compagny;
   lastProductAdded: Product;
@@ -27,9 +27,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.compagnyService.get().then(compagny => {
-      this.compagny = compagny;
-    })
+    this.compagnyService.current.subscribe(compagny => this.compagny = compagny);
     this.productService.get().then(products => {
       this.products = products;
     })

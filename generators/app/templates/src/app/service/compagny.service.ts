@@ -5,18 +5,24 @@ import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
+import {Cart} from "../model/cart";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class CompagnyService {
 
+  current : BehaviorSubject<Compagny> = new BehaviorSubject<Compagny>(null);
   constructor(private http : Http) { }
 
-  get() : Promise<Compagny> {
-    return this.http.get(environment.compagnyUrl)
+  init() : void{
+    this.http.get(environment.compagnyUrl)
+      .map( res => {
+        let company = res.json() as Compagny;
+        this.current.next(company);
+      })
       .toPromise()
-      .then( res => res.json() as Compagny )
       .catch( error => {
-        console.error( 'Could not get information on the compagnie ', error );
+        console.error( 'Could not get information on the compagny ', error );
         throw error;
       } );
   }
