@@ -2,5 +2,6 @@ export class Product {
     id: number
     name: string
     desc: string
-    price : number
+    price: number
+    image: string
 }

@@ -3,6 +3,8 @@ import { CompagnyService } from '../service/compagny.service';
 import { ProductService } from '../service/product.service';
 import { CartService } from '../service/cart.service';
 import { Product } from '../model/product';
+import { Compagny } from '../model/compagny';
+
 import { PopinComponent } from '../popin/popin.component';
 
 @Component({
@@ -11,35 +13,36 @@ import { PopinComponent } from '../popin/popin.component';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  title : string;
-  products : Product[];
-  lastProductAdded : Product;
+  
+  products: Product[];
+  compagny: Compagny;
+  lastProductAdded: Product;
 
-  @ViewChild('productAdded') productAdded : PopinComponent;
+  @ViewChild('productAdded') productAdded: PopinComponent;
 
-  constructor(private compagnyService : CompagnyService
-    , private productService : ProductService
-    , private cartService : CartService) {
-    this.products = []; 
+  constructor(private compagnyService: CompagnyService
+    , private productService: ProductService
+    , private cartService: CartService) {
+    this.products = [];
   }
 
   ngOnInit() {
     this.compagnyService.get().then(compagny => {
-      this.title = compagny.name;
+      this.compagny = compagny;
     })
     this.productService.get().then(products => {
       this.products = products;
     })
   }
 
-  addToCart(product){
+  addToCart(product) {
     this.cartService.addProduct(product).then(cart => {
       this.lastProductAdded = product;
       this.productAdded.open();
     });
   }
 
-  closeProductAdded(){
+  closeProductAdded() {
     this.productAdded.close();
   }
 }
