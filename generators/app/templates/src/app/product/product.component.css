@@ -1,44 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
 
+
 * {
   box-sizing: border-box;
 }
-
-.headerContent {
-  background:rgba(0,0,0,0.75);
-  opacity:0.75;
-  width: 100%;
-  height: 100%;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -ms-flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-direction: column;-ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;-ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 0 16px;
-}
 header {
+  position: relative;
+  }
+
+#header_image {
+  position: absolute;
+  z-index: -1;
+  }
+
+#header_titre {
   height: calc(100vh - 64px);
-  background-image: url('https://scontent-cdg2-1.xx.fbcdn.net/v/t31.0-8/19983741_1920378691572209_4092098315347183459_o.jpg?oh=701ba1815e7c82a0be50eefd3818263a&oe=5A59643D');
   backgrond-repeat: no-repeat;
   background-size: cover;
   color: white;
   text-align: center;
-}
-
-.headerContent > h2 {
-  font-size: 56px;
-  font-weight: 300;
-  margin: 0;
-}
-
-.headerContent > p {
-  font-size: 32px;
+  }
+#header_titre > h2 {
+    font-size: 56px;
+    font-weight: 300;
+    margin: 0;
+  }
+  
+#header_titre > p {
+    font-size: 32px;
 }
 
 .product-list{

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { CompagnyService } from '../service/compagny.service';
 
-import {Cart} from '../model/cart'
-import {Product} from '../model/product'
-import {CartService} from '../service/cart.service'
-import {PopinComponent} from '../popin/popin.component'
-import {PushService} from "../service/push.service";
+import { Cart } from '../model/cart'
+import { Product } from '../model/product'
+import { Compagny } from '../model/compagny'
+import { CartService } from '../service/cart.service'
+import { PopinComponent } from '../popin/popin.component'
+import { PushService } from "../service/push.service";
 
 
 @Component({
@@ -14,39 +16,43 @@ import {PushService} from "../service/push.service";
 })
 export class CartComponent implements OnInit {
 
-  cart : Cart;
+  cart: Cart;
+  compagny: Compagny;
 
-  @ViewChild('reservation') reservation : PopinComponent;
-  @ViewChild('validation') validation : PopinComponent;
+  @ViewChild('reservation') reservation: PopinComponent;
+  @ViewChild('validation') validation: PopinComponent;
 
-  constructor(private cartService : CartService, private pushService: PushService){ }
+  constructor(private cartService: CartService, private pushService: PushService, private compagnyService: CompagnyService) { }
 
   ngOnInit() {
     this.cartService.current.subscribe(cart => this.cart = cart);
     this.cartService.init();
+    this.compagnyService.get().then(compagny => {
+      this.compagny = compagny;
+    })
   }
 
-  removeProduct(product : Product) : void {
+  removeProduct(product: Product): void {
     this.cartService.removeProduct(product);
   }
 
-  validerReservation(){
-    this.cartService.validateCart(this.cart).then(cart =>{
+  validerReservation() {
+    this.cartService.validateCart(this.cart).then(cart => {
       this.closeReservation();
       this.openValidation();
       this.pushService.subscribeToPush(this.cart);
     })
   }
 
-  openValidation(){
+  openValidation() {
     this.validation.open();
   }
 
-  openReservation(){
+  openReservation() {
     this.reservation.open();
   }
 
-  closeReservation(){
+  closeReservation() {
     this.reservation.close();
   }
 }

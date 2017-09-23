@@ -1,7 +1,8 @@
-<header>
-  <div class="headerContent">
-    <h2>{{compagny.title}}</h2>
-    <p>Made with App Layout Elements</p>
+<header *ngIf="compagny">
+  <img [src]="compagny.image" id="header_image" width=100%/>
+  <div id="header_titre">
+      <h2>{{compagny.title}}</h2>
+      <p>Made with App Layout Elements</p>
   </div>
 </header>
 
