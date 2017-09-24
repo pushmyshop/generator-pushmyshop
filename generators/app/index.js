@@ -62,17 +62,17 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.spawnCommand(
-      'npm',
-      ['install'],
+    this.spawnCommandSync(
+      'docker',
+      ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
       {
         cwd: path.join(
           this.options.destWrite,
           this.options.compagnyName)
       });
-    this.spawnCommand(
-      'ng',
-      ['build', '--prod'],
+    this.spawnCommandSync(
+      'docker',
+      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName, 'pushmyshop/compagny' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,

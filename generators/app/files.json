@@ -11,6 +11,7 @@
         "package.json",
         "protractor.conf.js",
         "README.md",
+        "Dockerfile",
         "src/app/app.component.css",
         "src/app/app.component.html",
         "src/app/app.component.ts",
@@ -32,7 +33,6 @@
         "src/app/service/product.service.ts",
         "src/app/service/push.service.ts",
         "src/assets/images/pizza.png",
-        "src/environments/environment.prod.ts",
         "src/favicon.ico",
         "src/index.html",
         "src/main.ts",
@@ -43,10 +43,12 @@
         "src/tsconfig.spec.json",
         "src/typings.d.ts",
         "tsconfig.json",
-        "tslint.json"
+        "tslint.json",
+        "nginx/default.conf"
     ],
     "templates": [
         "src/_manifest.json",
-        "src/environments/_environment.ts"
+        "src/environments/_environment.ts",
+        "src/environments/_environment.prod.ts"
     ]
 }
