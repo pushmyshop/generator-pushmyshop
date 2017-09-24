@@ -5,6 +5,11 @@ var files = require('./files.json');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
+    console.log(this.argument);
+    this.argument('compagnyId', {
+      type: Number,
+      required: true
+    });
     this.argument('compagnyName', {
       type: String,
       required: true
@@ -18,6 +23,7 @@ module.exports = class extends Generator {
   information() {
     this.log('I\'ll generate wep app with this informations :');
     this.log('Name of compagny is ' + this.options.compagnyName);
+    this.log('Id of compagny is ' + this.options.compagnyId);
     this.log('Sources of projects are in folder ' + path.join(this.options.destWrite, this.options.compagnyName));
   }
 
@@ -47,7 +53,10 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(src),
         this.destinationPath(dest),
-        { compagnyName: this.options.compagnyName }
+        {
+          compagnyName: this.options.compagnyName,
+          compagnyId: this.options.compagnyId,
+        }
       );
     };
   }
