@@ -72,7 +72,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName, 'pushmyshop/compagny' + this.options.compagnyId],
+      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName+'.pushmyshop.com', 'pushmyshop/compagny' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,
