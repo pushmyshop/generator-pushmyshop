@@ -1,30 +1,29 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
 
-
 * {
   box-sizing: border-box;
 }
-header {
-  position: relative;
-  }
-
 #header_image {
   position: absolute;
+  height: 100%;
   z-index: -1;
-  }
+}
+
+header {
+  position: relative;
+}
 
 #header_titre {
   backgrond-repeat: no-repeat;
   background-size: cover;
   color: white;
   text-align: center;
-  }
+}
 #header_titre > h2 {
-    font-size: 56px;
-    font-weight: 300;
-    margin: 0;
-  }
-
+  font-size: 56px;
+  font-weight: 300;
+  margin: 0;
+}
 #header_titre > p {
     font-size: 32px;
 }
@@ -60,28 +59,14 @@ header {
   margin-right: 20px;
 }
 
-.addToCart svg {
-  fill: #BDC7CF;
+.add-icon {
+  color: #BDC7CF;
+  font-size: 40px;
 }
 
-.addToCart svg:hover {
-  fill: #06D85F;
+.add-icon:hover {
+  color: #06D85F;
 }
-
-.is-active {
-  animation-name: animate;
-  animation-duration: .8s;
-  animation-iteration-count: 1;
-  animation-timing-function: steps(28);
-  animation-fill-mode: forwards;
-}
-
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-}
-
 /* Product Image */
 .image {
   margin-right: 50px;
@@ -121,42 +106,16 @@ header {
   font-weight: 300;
 }
 
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-.popup svg {
-  fill: #06D85F;
-  width: 25px;
-  height: 25px;
-}
-.product-name {
-  font-weight: bold;
-}
-
-
-
 /* Responsive */
 @media (max-width: 800px) {
+  #header_titre > h2 {
+    font-size: 32px;
+  }
+
+  #header_titre > p {
+    font-size: 20px;
+  }
+
   .product-list {
     width: 100%;
     height: auto;
@@ -166,9 +125,6 @@ header {
     width: 100%;
     text-align: center;
     margin-right: 0px;
-  }
-  .addToCart {
-    margin: 6px 0;
   }
   .item {
     height: auto;
