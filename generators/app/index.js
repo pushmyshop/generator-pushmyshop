@@ -6,15 +6,15 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     console.log(this.argument);
+    this.argument('destWrite', {
+      type: String,
+      required: true
+    });
     this.argument('compagnyId', {
       type: Number,
       required: true
     });
     this.argument('compagnyName', {
-      type: String,
-      required: true
-    });
-    this.argument('destWrite', {
       type: String,
       required: true
     });
