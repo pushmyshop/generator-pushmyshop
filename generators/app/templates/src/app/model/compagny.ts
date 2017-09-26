@@ -12,5 +12,5 @@ export class Compagny {
     postalCode: string;
     town: string;
     telephoneNumber: string;
-    emailAdress: string;
+    emailAddress: string;
 }

@@ -5,19 +5,29 @@
 }
 #header_image {
   position: absolute;
-  height: 100%;
+  width: 100%;
   z-index: -1;
 }
 
 header {
   position: relative;
+  text-align: center;
 }
 
 #header_titre {
+  margin: auto;
   backgrond-repeat: no-repeat;
   background-size: cover;
   color: white;
   text-align: center;
+
+  width:50%;
+  /* styling bellow */
+  background-color:black;
+  color:white;
+  opacity:0.6; /* transparency */
+  filter:alpha(opacity=60); /* IE transparency */
+  border-radius: 20px;
 }
 #header_titre > h2 {
   font-size: 56px;

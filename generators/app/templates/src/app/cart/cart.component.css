@@ -6,7 +6,7 @@
 
 #header_image {
   position: absolute;
-  height: 100%;
+  width: 100%;
   z-index: -1;
 }
 
@@ -19,6 +19,15 @@ header {
   background-size: cover;
   color: white;
   text-align: center;
+  margin: auto;
+
+  width:50%;
+  /* styling bellow */
+  background-color:black;
+  color:white;
+  opacity:0.6; /* transparency */
+  filter:alpha(opacity=60); /* IE transparency */
+  border-radius: 20px;
 }
 #header_titre > h2 {
   font-size: 56px;
@@ -171,6 +180,13 @@ header {
 
 /* Responsive */
 @media (max-width: 800px) {
+  #header_titre > h2 {
+    font-size: 32px;
+  }
+
+  #header_titre > p {
+    font-size: 20px;
+  }
   .shopping-cart {
     width: 100%;
     height: auto;
