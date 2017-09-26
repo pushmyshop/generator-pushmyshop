@@ -15,6 +15,7 @@
         "src/app/app.component.html",
         "src/app/app.component.ts",
         "src/app/app.module.ts",
+	"src/app/material.module.ts",
         "src/app/cart/cart.component.css",
         "src/app/cart/cart.component.html",
         "src/app/cart/cart.component.ts",
