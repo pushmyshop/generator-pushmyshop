@@ -5,8 +5,8 @@ import { Cart } from '../model/cart'
 import { Product } from '../model/product'
 import { Compagny } from '../model/compagny'
 import { CartService } from '../service/cart.service'
-import { PopinComponent } from '../popin/popin.component'
-import { PushService } from "../service/push.service";
+import {MdDialog} from "@angular/material";
+import {OrderDialog} from "../order/order.component";
 
 
 @Component({
@@ -19,10 +19,9 @@ export class CartComponent implements OnInit {
   cart: Cart;
   compagny: Compagny;
 
-  @ViewChild('reservation') reservation: PopinComponent;
-  @ViewChild('validation') validation: PopinComponent;
-
-  constructor(private cartService: CartService, private pushService: PushService, private compagnyService: CompagnyService) { }
+  constructor(private cartService: CartService
+              , private compagnyService: CompagnyService
+              , private dialog: MdDialog) { }
 
   ngOnInit() {
     this.cartService.current.subscribe(cart => this.cart = cart);
@@ -34,23 +33,10 @@ export class CartComponent implements OnInit {
     this.cartService.removeProduct(product);
   }
 
-  validerReservation() {
-    this.cartService.validateCart(this.cart).then(cart => {
-      this.closeReservation();
-      this.openValidation();
-      this.pushService.subscribeToPush(this.cart);
-    })
-  }
-
-  openValidation() {
-    this.validation.open();
-  }
-
-  openReservation() {
-    this.reservation.open();
-  }
-
-  closeReservation() {
-    this.reservation.close();
+  openReservation(): void {
+    this.dialog.open(OrderDialog, {
+      panelClass : "order-dialog",
+      data: { cart: this.cart, compagny : this.compagny }
+    });
   }
 }

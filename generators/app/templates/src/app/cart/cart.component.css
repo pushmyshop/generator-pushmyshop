@@ -178,8 +178,15 @@ header {
   font-weight: 300;
 }
 
+.order-dialog{
+  width: 50%;
+}
 /* Responsive */
 @media (max-width: 800px) {
+  #header_titre {
+    width: 80%;
+  }
+
   #header_titre > h2 {
     font-size: 32px;
   }
@@ -214,32 +221,7 @@ header {
     text-align: center;
     margin: 6px 0;
   }
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-.popup svg {
-  fill: #06D85F;
-  width: 25px;
-  height: 25px;
+  .order-dialog{
+    width: 80%;
+  }
 }

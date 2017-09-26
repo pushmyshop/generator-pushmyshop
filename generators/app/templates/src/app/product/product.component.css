@@ -118,6 +118,10 @@ header {
 
 /* Responsive */
 @media (max-width: 800px) {
+  #header_titre {
+    width: 80%;
+  }
+
   #header_titre > h2 {
     font-size: 32px;
   }

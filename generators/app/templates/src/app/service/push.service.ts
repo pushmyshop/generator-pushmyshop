@@ -20,29 +20,30 @@ export class PushService {
     navigator['serviceWorker']
       .getRegistration(this.swScope)
       .then(registration => {
-
-        registration.pushManager
-          .subscribe({ userVisibleOnly: true, applicationServerKey: convertedVapidKey })
-          .then(function (subscription) {
-            return fetch(environment.compagnyUrl+'/carts/'+cart.id+'/webpush', {
-              method: "POST",
-              body: JSON.stringify({
-                endpoint : subscription.endpoint,
-                publicKey : subscription.toJSON().keys.p256dh,
-                auth : subscription.toJSON().keys.auth
-              }),
-              headers: { 'Content-Type': 'application/json' }
-            })
-              .then(response => {
-                return response.json()
+        if(registration) {
+          registration.pushManager
+            .subscribe({userVisibleOnly: true, applicationServerKey: convertedVapidKey})
+            .then(function (subscription) {
+              return fetch(environment.compagnyUrl + '/carts/' + cart.id + '/webpush', {
+                method: "POST",
+                body: JSON.stringify({
+                  endpoint: subscription.endpoint,
+                  publicKey: subscription.toJSON().keys.p256dh,
+                  auth: subscription.toJSON().keys.auth
+                }),
+                headers: {'Content-Type': 'application/json'}
               })
-              .then(json => {
-                console.log('Subscription request answer', json)
-              })
-              .catch(error => {
-                console.log('Subscription request failed', error)
-              });
-          });
+                .then(response => {
+                  return response.json()
+                })
+                .then(json => {
+                  console.log('Subscription request answer', json)
+                })
+                .catch(error => {
+                  console.log('Subscription request failed', error)
+                });
+            });
+        }
 
       })
       .catch(error => {

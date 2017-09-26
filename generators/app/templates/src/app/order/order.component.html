@@ -1,0 +1,66 @@
+<h1 md-dialog-title>Finaliser votre réservation <a class="close" (click)="close()">&times;</a></h1>
+<div md-dialog-content *ngIf="!orderValidated">
+
+  <md-form-field class="example-full-width">
+    <input mdInput [mdDatepicker]="picker" placeholder="Date de retrait" (click)="picker.open()" [formControl]="dateFormControl" [(ngModel)]="data.cart.pickingDate">
+    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+    <md-datepicker touchUi="true" #picker></md-datepicker>
+    <md-error *ngIf="dateFormControl.hasError('required')">
+      La date de retrait est obligatoire
+    </md-error>
+  </md-form-field>
+
+  <table cellspacing="0">
+    <tr>
+      <td>
+        <md-form-field class="timeField">
+          <input mdInput placeholder="HH" min="0" max="23" maxlength="2" [formControl]="heureFormControl" [(ngModel)]="data.cart.pickingTimeHours">
+        </md-form-field>
+      </td>
+      <td>:</td>
+      <td>
+        <md-form-field class="timeField">
+          <input mdInput placeholder="MM" min="0" max="59" maxlength="2" [formControl]="minuteFormControl" [(ngModel)]="data.cart.pickingTimeMinutes">
+        </md-form-field>
+      </td>
+      <td>
+        <md-error *ngIf="minuteFormControl.hasError('required') || minuteFormControl.hasError('min') || minuteFormControl.hasError('max')
+        || minuteFormControl.hasError('required') || minuteFormControl.hasError('min') || minuteFormControl.hasError('max')">
+          L'heure de retrait est obligatoire
+        </md-error>
+      </td>
+    </tr>
+  </table>
+
+  <md-form-field class="example-full-width">
+    <input mdInput placeholder="Nom" [formControl]="nomFormControl" [(ngModel)]="data.cart.pickingName">
+    <md-error *ngIf="nomFormControl.hasError('required')">
+      Le nom est obligatoire
+    </md-error>
+  </md-form-field>
+
+  <md-form-field class="example-full-width">
+    <input mdInput placeholder="Numero de téléphone" [formControl]="telFormControl" [(ngModel)]="data.cart.pickingPhone">
+    <md-error *ngIf="nomFormControl.hasError('required')">
+      Le numero de téléphone est obligatoire
+    </md-error>
+  </md-form-field>
+
+  <div>
+    <button md-button color="primary" (click)="validerReservation()">Valider</button>
+  </div>
+</div>
+
+<div md-dialog-content *ngIf="orderValidated">
+  <p>
+    <md-icon class="validated">playlist_add_check</md-icon>
+    Votre commande a été validée.
+  </p>
+  <p>
+    Merci d'attendre la confirmation de votre commerçant.(La confirmation peut prendre plusieurs minutes selon les heures d'ouvertures
+    et l'activité de votre commerce).
+  </p>
+  <p>
+    En cas de doute sur la confirmation de votre commande, merci de joindre directement votre commerçant au {{data.compagny.telephoneNumber}}
+  </p>
+</div>

@@ -14,7 +14,7 @@ export class CartService {
 
   current : BehaviorSubject<Cart> = new BehaviorSubject<Cart>(null);
   private headers = new Headers( { 'Content-Type': 'application/json' } );
-  
+
   constructor(private http : Http) { }
 
   init() : void{
@@ -22,6 +22,11 @@ export class CartService {
     if(currentCart){
       return this.current.next(currentCart);
     }
+  }
+
+  resetCart(){
+    localStorage.removeItem('cart');
+    this.current.next(null)
   }
 
   addProduct(product : Product) : Promise<Cart> {
