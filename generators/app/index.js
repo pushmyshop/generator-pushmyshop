@@ -78,7 +78,7 @@ module.exports = class extends Generator {
           this.options.compagnyName)
       });
     this.spawnCommandSync(
-      'ng',
+      './node_modules/bin/ng',
       ['build', '--prod','--aot','--build-optimizer'],
       {
         cwd: path.join(
