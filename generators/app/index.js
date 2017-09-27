@@ -64,7 +64,7 @@ module.exports = class extends Generator {
 
   install() {
     var route53 = new AWS.Route53();
-    var params = {ChangeBatch: { Changes: [{Action: "CREATE", ResourceRecordSet: { Name: this.options.compagnyName+ ".pushmyshop.com",ResourceRecords: [{Value: "52.19.54.10"}],TTL: 60,Type: "A"}}], Comment: "Add new entry for compagny :"+this.options.compagnyName},HostedZoneId: "ZTMTVN9GNFA4M" };
+    var params = {ChangeBatch: { Changes: [{Action: "CREATE", ResourceRecordSet: { Name: this.options.compagnyName.replace(/ /g,'')+ ".pushmyshop.com",ResourceRecords: [{Value: "52.19.54.10"}],TTL: 60,Type: "A"}}], Comment: "Add new entry for compagny :"+this.options.compagnyName},HostedZoneId: "ZTMTVN9GNFA4M" };
     route53.changeResourceRecordSets(params, function(err, data) {
     	if (err) console.log(err, err.stack); // an error occurred
    	else     console.log(data);           // successful response
@@ -80,7 +80,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName+'.pushmyshop.com','--name',this.options.compagnyName+'.pushmyshop.com','--net','pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
+      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g,'')+'.pushmyshop.com','--name',this.options.compagnyName.replace(/ /g,'')+'.pushmyshop.com','--net','pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,
