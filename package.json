@@ -21,6 +21,7 @@
     "generators"
   ],
   "dependencies": {
+    "aws-sdk": "^2.123.0",
     "yeoman-generator": "^1.1.1"
   }
 }

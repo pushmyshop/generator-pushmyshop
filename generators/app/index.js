@@ -1,6 +1,7 @@
 var Generator = require('yeoman-generator');
 var path = require('path');
 var files = require('./files.json');
+var AWS = require('aws-sdk');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -62,6 +63,13 @@ module.exports = class extends Generator {
   }
 
   install() {
+    var route53 = new AWS.Route53();
+    var params = {ChangeBatch: { Changes: [{Action: "CREATE", ResourceRecordSet: { Name: this.options.compagnyName+ ".pushmyshop.com",ResourceRecords: [{Value: "52.19.54.10"}],TTL: 60,Type: "A"}}], Comment: "Add new entry for compagny :"+this.options.compagnyName},HostedZoneId: "ZTMTVN9GNFA4M" };
+    route53.changeResourceRecordSets(params, function(err, data) {
+    	if (err) console.log(err, err.stack); // an error occurred
+   	else     console.log(data);           // successful response
+    });
+
     this.spawnCommandSync(
       'docker',
       ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
