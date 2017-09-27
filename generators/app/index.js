@@ -69,7 +69,22 @@ module.exports = class extends Generator {
     	if (err) console.log(err, err.stack); // an error occurred
    	else     console.log(data);           // successful response
     });
-
+    this.spawnCommandSync(
+      'npm',
+      ['install'],
+      {
+        cwd: path.join(
+          this.options.destWrite,
+          this.options.compagnyName)
+      });
+    this.spawnCommandSync(
+      'ng',this.spawnCommand(
+      ['build', '--prod','--aot','--build-optimizer'],
+      {
+        cwd: path.join(
+          this.options.destWrite,
+          this.options.compagnyName)
+      });
     this.spawnCommandSync(
       'docker',
       ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
