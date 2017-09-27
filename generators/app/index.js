@@ -78,8 +78,8 @@ module.exports = class extends Generator {
           this.options.compagnyName)
       });
     this.spawnCommandSync(
-      './node_modules/bin/ng',
-      ['build', '--prod','--aot','--build-optimizer'],
+      './node_modules/.bin/ng',
+      ['build', '--prod','-aot','--build-optimizer'],
       {
         cwd: path.join(
           this.options.destWrite,
