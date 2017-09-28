@@ -44,6 +44,10 @@ module.exports = class extends Generator {
       this.templatePath(path.join(this.sourceRoot(), 'Dockerfile')),
       this.destinationPath(path.join(this.options.destWrite, this.options.compagnyName, 'Dockerfile'))
     );
+    this.fs.copy(
+      this.templatePath(path.join(this.sourceRoot(), 'nginx')),
+      this.destinationPath(path.join(this.options.destWrite, this.options.compagnyName, 'nginx'))
+    );
   }
 
   install() {
@@ -61,7 +65,9 @@ module.exports = class extends Generator {
         'f',
         '-exec',
         'sed',
-        '-i.bak',
+        '-i',
+	'',
+        '-e'
         's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '') + '/g',
         '{}', '+']
       , {
