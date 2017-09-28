@@ -1,13 +1,13 @@
 {
     "dir": "ltr",
     "lang": "fr",
-    "name": "<%= compagnyName %>",
+    "name": "<%=compagnyName%>",
     "scope": "/",
     "display": "standalone",
     "start_url": "./?utm_source=web_app_manifest",
-    "short_name": "<%= compagnyName %>",
+    "short_name": "<%=compagnyName%>",
     "theme_color": "#393939",
-    "description": "<%= compagnyName %>",
+    "description": "<%=compagnyName%>",
     "orientation": "any",
     "background_color": "#ffffff",
     "related_applications": [],
@@ -18,5 +18,4 @@
         "sizes": "256x256"
       }
     ]
-  }
-  
+}

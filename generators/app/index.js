@@ -29,62 +29,48 @@ module.exports = class extends Generator {
   }
 
   writeSrcApp() {
-    for (var i = 0; i < files.static.length; i++) {
-      var src = path.join(
-        this.sourceRoot(),
-        files.static[i]);
-      var dest = path.join(
-        this.options.destWrite,
-        this.options.compagnyName,
-        files.static[i])
-      console.log('copy ' + src + ' to' + dest);
-      this.fs.copy(
-        this.templatePath(src),
-        this.destinationPath(dest)
-      );
-    }
-    for (var i = 0; i < files.templates.length; i++) {
-      var src = path.join(
-        this.sourceRoot(),
-        files.templates[i]);
-      var dest = path.join(
-        this.options.destWrite,
-        this.options.compagnyName,
-        files.templates[i].replace(/\/_/g, "/"))
-      this.fs.copyTpl(
-        this.templatePath(src),
-        this.destinationPath(dest),
-        {
-          compagnyName: this.options.compagnyName,
-          compagnyId: this.options.compagnyId,
-        }
-      );
-    };
+    var src = path.join(
+      this.sourceRoot(),
+      'dist');
+    var dest = path.join(
+      this.options.destWrite,
+      this.options.compagnyName,
+      'dist')
+    this.fs.copy(
+      this.templatePath(src),
+      this.destinationPath(dest)
+    );
+    this.fs.copy(
+      this.templatePath(path.join(this.sourceRoot(), 'Dockerfile')),
+      this.destinationPath(path.join(this.options.destWrite, this.options.compagnyName, 'Dockerfile'))
+    );
   }
 
   install() {
     var route53 = new AWS.Route53();
-    var params = {ChangeBatch: { Changes: [{Action: "CREATE", ResourceRecordSet: { Name: this.options.compagnyName.replace(/ /g,'')+ ".pushmyshop.com",ResourceRecords: [{Value: "52.19.54.10"}],TTL: 60,Type: "A"}}], Comment: "Add new entry for compagny :"+this.options.compagnyName},HostedZoneId: "ZTMTVN9GNFA4M" };
-    route53.changeResourceRecordSets(params, function(err, data) {
-    	if (err) console.log(err, err.stack); // an error occurred
-    	else     console.log(data);           // successful response
+    var params = { ChangeBatch: { Changes: [{ Action: "CREATE", ResourceRecordSet: { Name: this.options.compagnyName.replace(/ /g, '') + ".pushmyshop.com", ResourceRecords: [{ Value: "52.19.54.10" }], TTL: 60, Type: "A" } }], Comment: "Add new entry for compagny :" + this.options.compagnyName }, HostedZoneId: "ZTMTVN9GNFA4M" };
+    route53.changeResourceRecordSets(params, function (err, data) {
+      if (err) console.log(err, err.stack); // an error occurred
+      else console.log(data);           // successful response
     });
+
     this.spawnCommandSync(
-      'npm',
-      ['install'],
-      {
+      'find',
+      ['.',
+        '-type',
+        'f',
+        '-exec',
+        'sed',
+        '-i.bak',
+        's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '') + '/g',
+        '{}', '+']
+      , {
         cwd: path.join(
           this.options.destWrite,
           this.options.compagnyName)
-      });
-    this.spawnCommandSync(
-      'node'
-      ['--max_old_space_size','200','./node_modules/.bin/ng','build', '--prod','-aot','--build-optimizer'],
-      {
-        cwd: path.join(
-          this.options.destWrite,
-          this.options.compagnyName)
-      });
+      }
+    );
+
     this.spawnCommandSync(
       'docker',
       ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
@@ -95,7 +81,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g,'')+'.pushmyshop.com','--name',this.options.compagnyName.replace(/ /g,'')+'.pushmyshop.com','--net','pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
+      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g, '') + '.pushmyshop.com', '--name', this.options.compagnyName.replace(/ /g, '') + '.pushmyshop.com', '--net', 'pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,

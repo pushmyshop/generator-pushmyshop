@@ -47,8 +47,5 @@
         "tslint.json"
     ],
     "templates": [
-        "src/_manifest.json",
-        "src/environments/_environment.ts",
-        "src/environments/_environment.prod.ts"
     ]
 }
