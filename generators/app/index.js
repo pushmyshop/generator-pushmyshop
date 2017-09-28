@@ -36,6 +36,7 @@ module.exports = class extends Generator {
       this.options.destWrite,
       this.options.compagnyName,
       'dist')
+    this.fs.delete(path.join(dest, '*'));
     this.fs.copy(
       this.templatePath(src),
       this.destinationPath(dest)
@@ -67,7 +68,7 @@ module.exports = class extends Generator {
         'sed',
         '-i\'\'',
         '-e',
-        's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '') + '/g',
+        's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '/g',
         '{}', '+']
       , {
         cwd: path.join(
@@ -75,7 +76,22 @@ module.exports = class extends Generator {
           this.options.compagnyName)
       }
     );
-
+    this.spawnCommandSync(
+      'docker',
+      ['stop', this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com'],
+      {
+        cwd: path.join(
+          this.options.destWrite,
+          this.options.compagnyName)
+      });
+    this.spawnCommandSync(
+      'docker',
+      ['rmi', 'pushmyshop/compagny' + this.options.compagnyId],
+      {
+        cwd: path.join(
+          this.options.destWrite,
+          this.options.compagnyName)
+      });
     this.spawnCommandSync(
       'docker',
       ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
@@ -86,7 +102,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g, '') + '.pushmyshop.com', '--name', this.options.compagnyName.replace(/ /g, '') + '.pushmyshop.com', '--net', 'pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
+      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com', '--name', this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com', '--net', 'pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,
