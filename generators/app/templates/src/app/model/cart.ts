@@ -3,7 +3,7 @@ export class Cart {
     id: string
     products : Product[] = [];
 
-    pickingDate : Date;
+    pickingDate : string;
     pickingHour : string;
     pickingTimeHours : string;
     pickingTimeMinutes : string;

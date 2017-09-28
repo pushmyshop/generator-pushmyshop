@@ -20,7 +20,7 @@ export class OrderDialog implements OnInit {
   telFormControl = new FormControl('', [Validators.required]);
 
   orderValidated = false;
-  today : Date;
+  pickingDate : Date;
 
 
   constructor(private dialogRef: MdDialogRef<OrderDialog>
@@ -33,10 +33,10 @@ export class OrderDialog implements OnInit {
   }
 
   ngOnInit(){
-    this.today = new Date();
-    this.data.cart.pickingDate= this.today;
-    this.data.cart.pickingTimeHours= this.today.getHours() +1;//pisking in one hour by default
-    this.data.cart.pickingTimeMinutes= this.today.getMinutes();
+    this.pickingDate = new Date();
+    this.data.cart.pickingDate= this.pickingDate;
+    this.data.cart.pickingTimeHours= this.pickingDate.getHours() +1;//pisking in one hour by default
+    this.data.cart.pickingTimeMinutes= this.pickingDate.getMinutes();
   }
 
   validerReservation() {
@@ -44,7 +44,8 @@ export class OrderDialog implements OnInit {
       && this.minuteFormControl.valid && this.nomFormControl.valid
       && this.telFormControl.valid) {
 
-      this.data.pickingHour = this.data.pickingTimeHours + ':' + this.data.pickingTimeMinutes;
+      this.data.cart.pickingHour = this.data.cart.pickingTimeHours + ':' + this.data.cart.pickingTimeMinutes;
+      this.data.cart.pickingDate = this.pickingDate.getDate() + '/' + (this.pickingDate.getMonth()+1) + '/' + this.pickingDate.getFullYear();
       this._cartService.validateCart(this.data.cart).then(cart => {
         this._cartService.resetCart();
         this.orderValidated = true;
