@@ -9,4 +9,6 @@ export class Cart {
     pickingTimeMinutes : string;
     pickingName : string;
     pickingPhone : string;
+
+    isValidated : boolean = false;
 }

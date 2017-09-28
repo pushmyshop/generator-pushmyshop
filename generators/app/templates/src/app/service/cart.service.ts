@@ -55,6 +55,7 @@ export class CartService {
     return this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/checkout', JSON.stringify(cart), { headers: this.headers } )
     .map( res => {
       let cart = res.json() as Cart;
+      localStorage.setItem('lastOrder', JSON.stringify(cart));
       localStorage.removeItem('cart');
       return cart;
     })
@@ -64,6 +65,15 @@ export class CartService {
       return Promise.reject( error.message || error );
     } );
   }
+
+  getLastOrder() : Cart{
+    let lastOrder : Cart = JSON.parse(localStorage.getItem('lastOrder'));
+    if(lastOrder){
+      lastOrder.isValidated = true;
+    }
+    return lastOrder;
+  }
+
 
 
   private getCart(): Promise<Cart> {

@@ -181,6 +181,17 @@ header {
 .order-dialog{
   width: 50%;
 }
+.lastOrder{
+  float: left;
+  vertical-align: bottom;
+  margin: 15px 2px;
+}
+.lastOrder:hover {
+  color: #06D85F;
+  cursor: pointer;
+}
+
+
 /* Responsive */
 @media (max-width: 800px) {
   #header_titre {

@@ -7,17 +7,18 @@
 </header>
 
 <div class="shopping-cart">
+
   <!-- Title -->
   <div class="title">
     Votre commande
     <!-- actions -->
-    <button class="button" (click)="openReservation()">Réserver</button>
+    <button *ngIf="cart && !cart?.isValidated" class="button" (click)="openReservation()">Réserver</button>
   </div>
 
 
   <md-card class="item" *ngFor="let product of cart?.products">
     <div class="buttons">
-      <a class="removeFromCart" (click)="removeProduct(product)">
+      <a *ngIf="!cart?.isValidated" class="removeFromCart" (click)="removeProduct(product)">
         <md-icon class="delete-btn">close</md-icon>
       </a>
     </div>
@@ -36,6 +37,10 @@
 
   <!-- actions -->
   <div class="actions">
-    <button class="button" (click)="openReservation()">Réserver</button>
+    <a class="lastOrder" (click)="switch()">
+      <span *ngIf="lastOrder && !cart?.isValidated"><i class="material-icons">restore</i>Revoir votre dernière commande</span>
+      <span *ngIf="cart?.isValidated"><i class="material-icons">shopping_basket</i>Retour à votre panier</span>
+    </a>
+    <button *ngIf="cart && !cart?.isValidated" class="button" (click)="openReservation()">Réserver</button>
   </div>
 </div>

@@ -35,7 +35,7 @@ export class OrderDialog implements OnInit {
   ngOnInit(){
     this.pickingDate = new Date();
     this.data.cart.pickingDate= this.pickingDate;
-    this.data.cart.pickingTimeHours= this.pickingDate.getHours() +1;//pisking in one hour by default
+    this.data.cart.pickingTimeHours= ((this.pickingDate.getHours() +1)%24);//pisking in one hour by default
     this.data.cart.pickingTimeMinutes= this.pickingDate.getMinutes();
   }
 
@@ -55,11 +55,6 @@ export class OrderDialog implements OnInit {
   }
 
   close(): void {
-    if(!this.orderValidated){
-      this.dialogRef.close();
-    }else {
-      this._router.navigateByUrl("/");
-      this.dialogRef.close();
-    }
+    this.dialogRef.close();
   }
 }
