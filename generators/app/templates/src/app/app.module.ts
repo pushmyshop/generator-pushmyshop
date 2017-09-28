@@ -17,6 +17,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {PushService} from "./service/push.service";
 import {MaterialModule} from "./material.module";
 import {OrderDialog} from "./order/order.component";
+import {OfflineDialog} from "./offline/offline.component";
 
 
 export const routes: Routes = [
@@ -34,7 +35,8 @@ export const routes: Routes = [
     ProductComponent,
     CartComponent,
     ProductAddedDialog,
-    OrderDialog
+    OrderDialog,
+    OfflineDialog
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ export const routes: Routes = [
   ],
   entryComponents: [
     ProductAddedDialog,
-    OrderDialog
+    OrderDialog,
+    OfflineDialog
   ],
   bootstrap: [AppComponent]
 })

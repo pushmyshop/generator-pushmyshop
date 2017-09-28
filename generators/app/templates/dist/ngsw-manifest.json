@@ -5,6 +5,12 @@
       "/": {
         "match": "exact"
       },
+      "/product": {
+        "match": "exact"
+      },
+      "/cart": {
+        "match": "exact"
+      },
       "^/.*$": {
         "match": "regex"
       }
@@ -41,11 +47,10 @@
           }
         },
         "cache": {
-          "optimizeFor": "freshness",
-          "strategy": "fifo",
+          "optimizeFor": "performance",
+          "strategy": "lru",
           "maxAgeMs": 3600000,
-          "maxEntries": 2,
-          "networkTimeoutMs": 1000
+          "maxEntries": 2
         }
       }
     ]
@@ -58,15 +63,16 @@
     "urls": {
       "/fontello.42641586af6054f0f7e6.svg": "cca4d25992ee5a9b9266e443ae46ae55819dd490",
       "/fontello.078f910f70a2e032f1b6.eot": "934684f6e6fac5513093927ededac9cade875d30",
-      "/polyfills.b59a8422e26e64d12be4.bundle.js": "582fbc34b3a6f7c9ae7401816ebf8d5297c7865c",
-      "/main.0154360f655ffa9b6feb.bundle.js": "4d221492aff2ee9041ff4ab372a6bdcc4c93ffc0",
+      "/polyfills.c9b879328f3396b2bbe8.bundle.js": "f00c8e2e8fdb6dfab76c1ab43efb7fa3be20f4d6",
+      "/main.41a6b3a095e7b8ee7b02.bundle.js": "d89283df27b43a62d2f772baf8b244afda5798e0",
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
-      "/inline.498a3b3933782e75e4a0.bundle.js": "59b26e25e315f0a872bcc741cb1114ca509e22b6",
+      "/vendor.f902d3673f92a67df663.bundle.js": "4a6c7177d67128d382fe7879f0e8810e182b39bc",
+      "/inline.7f103d725a49b7cc15db.bundle.js": "c847a98e423c74dac3849c6ce204062f09dfa9b8",
       "/styles.36865f6ec8d61332f0e0.bundle.css": "df931725ef5ccb72e816f40011f355e9fd7e9d3e",
       "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
       "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
       "/manifest.json": "61c63d5ed7d2a73dacf10753d6b5ec7b1cb9d1f2",
-      "/index.html": "aec52d06445c62c58d620582d67543a23d62b723"
+      "/index.html": "413bd674dd370886e31057b320c876f68f0583fa"
     },
     "_generatedFromWebpack": true
   }

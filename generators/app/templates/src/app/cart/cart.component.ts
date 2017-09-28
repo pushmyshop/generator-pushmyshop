@@ -7,6 +7,7 @@ import { Compagny } from '../model/compagny'
 import { CartService } from '../service/cart.service'
 import {MdDialog} from "@angular/material";
 import {OrderDialog} from "../order/order.component";
+import {OfflineDialog} from "../offline/offline.component";
 
 
 @Component({
@@ -30,13 +31,21 @@ export class CartComponent implements OnInit {
   }
 
   removeProduct(product: Product): void {
-    this.cartService.removeProduct(product);
+    if(navigator.onLine){
+      this.cartService.removeProduct(product);
+    }else {
+      OfflineDialog.alertOffline(this.dialog, this.compagny);
+    }
   }
 
   openReservation(): void {
-    this.dialog.open(OrderDialog, {
-      panelClass : "order-dialog",
-      data: { cart: this.cart, compagny : this.compagny }
-    });
+    if(navigator.onLine){
+      this.dialog.open(OrderDialog, {
+        panelClass : "order-dialog",
+        data: { cart: this.cart, compagny : this.compagny }
+      });
+    }else {
+      OfflineDialog.alertOffline(this.dialog, this.compagny);
+    }
   }
 }

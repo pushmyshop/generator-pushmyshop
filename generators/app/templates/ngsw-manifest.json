@@ -8,6 +8,12 @@
         "/": {
           "match": "exact"
         },
+        "/product": {
+          "match": "exact"
+        },
+        "/cart": {
+          "match": "exact"
+        },
         "^/.*$": {
           "match": "regex"
         }
@@ -41,11 +47,10 @@
           }
         },
         "cache": {
-          "optimizeFor": "freshness",
-          "strategy": "fifo",
+          "optimizeFor": "performance",
+          "strategy": "lru",
           "maxAgeMs": 3600000,
-          "maxEntries": 2,
-          "networkTimeoutMs": 1000
+          "maxEntries": 2
         }
       }
     ]

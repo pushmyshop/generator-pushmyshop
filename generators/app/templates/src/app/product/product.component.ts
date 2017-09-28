@@ -6,6 +6,7 @@ import { Product } from '../model/product';
 import { Compagny } from '../model/compagny';
 
 import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from "@angular/material";
+import {OfflineDialog} from "../offline/offline.component";
 
 @Component({
   selector: 'app-product',
@@ -32,9 +33,13 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product) {
-    this.cartService.addProduct(product).then(cart => {
-      this.openDialog(product);
-    });
+    if(navigator.onLine){
+      this.cartService.addProduct(product).then(cart => {
+        this.openDialog(product);
+      });
+    }else {
+      OfflineDialog.alertOffline(this.dialog, this.compagny);
+    }
   }
 
   private openDialog(product : Product): void {
