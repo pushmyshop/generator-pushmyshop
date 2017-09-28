@@ -2,7 +2,7 @@
 <div md-dialog-content *ngIf="!orderValidated">
 
   <md-form-field class="example-full-width">
-    <input mdInput [mdDatepicker]="picker" placeholder="Date de retrait" (click)="picker.open()" [formControl]="dateFormControl" [(ngModel)]="data.cart.pickingDate">
+    <input mdInput [mdDatepicker]="picker" placeholder="Date de retrait" (click)="picker.open()" [formControl]="dateFormControl" [(ngModel)]="data.cart.pickingDate"  [min]="today">
     <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
     <md-datepicker touchUi="true" #picker></md-datepicker>
     <md-error *ngIf="dateFormControl.hasError('required')">

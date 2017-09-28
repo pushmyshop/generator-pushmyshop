@@ -1,4 +1,4 @@
-import {Component, Inject} from "@angular/core";
+import {Component, Inject, OnInit} from "@angular/core";
 import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
 import {CartService} from "../service/cart.service";
 import {PushService} from "../service/push.service";
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
-export class OrderDialog {
+export class OrderDialog implements OnInit {
 
   dateFormControl = new FormControl('', [Validators.required]);
   heureFormControl = new FormControl('', [Validators.required, Validators.min(0), Validators.max(23)]);
@@ -20,6 +20,7 @@ export class OrderDialog {
   telFormControl = new FormControl('', [Validators.required]);
 
   orderValidated = false;
+  today : Date;
 
 
   constructor(private dialogRef: MdDialogRef<OrderDialog>
@@ -29,6 +30,13 @@ export class OrderDialog {
     , private _dateAdapter: DateAdapter<NativeDateAdapter>
     , private _router : Router) {
     _dateAdapter.setLocale('fr-FR');
+  }
+
+  ngOnInit(){
+    this.today = new Date();
+    this.data.cart.pickingDate= this.today;
+    this.data.cart.pickingTimeHours= this.today.getHours() +1;//pisking in one hour by default
+    this.data.cart.pickingTimeMinutes= this.today.getMinutes();
   }
 
   validerReservation() {
