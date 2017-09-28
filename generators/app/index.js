@@ -65,8 +65,7 @@ module.exports = class extends Generator {
         'f',
         '-exec',
         'sed',
-        '-i',
-	'',
+        '-i\'\'',
         '-e',
         's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '') + '/g',
         '{}', '+']
