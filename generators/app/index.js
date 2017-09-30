@@ -20,12 +20,22 @@ module.exports = class extends Generator {
       type: String,
       required: true
     });
+    this.argument('compagnyLogo', {
+      type: String,
+      required: true
+    });
+    this.argument('compagnyImage', {
+      type: String,
+      required: true
+    });
   }
 
   information() {
     this.log('I\'ll generate wep app with this informations :');
     this.log('Name of compagny is ' + this.options.compagnyName);
     this.log('Id of compagny is ' + this.options.compagnyId);
+    this.log('Logo of compagny is ' + this.options.compagnyLogo);
+    this.log('Image of compagny is ' + this.options.compagnyImage);
     this.log('Sources of projects are in folder ' + path.join(this.options.destWrite, this.options.compagnyName));
   }
 
@@ -78,7 +88,12 @@ module.exports = class extends Generator {
         'sed',
         '-i\'\'',
         '-e',
-        's/<%=compagnyName%>/' + this.options.compagnyName + '/g;s/<%=compagnyId%>/' + this.options.compagnyId + '/g;s/<%=compagnyApiUrl%>/' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '/g',
+        's,<%=compagnyName%>,' + this.options.compagnyName
+                + ',g;s,<%=compagnyId%>,' + this.options.compagnyId
+                + ',g;s,<%=compagnyApiUrl%>,' + this.options.compagnyName.replace(/ /g, '').toLowerCase()
+                + ',g;s,<%=compagnyLogo%>,' + this.options.compagnyLogo
+                + ',g;s,<%=compagnyImage%>,' + this.options.compagnyImage
+                + ',g',
         '{}', '+']
       , {
         cwd: path.join(
