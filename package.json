@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "aws-sdk": "^2.123.0",
+    "rimraf": "^2.6.2",
     "yeoman-generator": "^1.1.1"
   }
 }

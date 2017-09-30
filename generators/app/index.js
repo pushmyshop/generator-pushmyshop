@@ -2,6 +2,7 @@ var Generator = require('yeoman-generator');
 var path = require('path');
 var files = require('./files.json');
 var AWS = require('aws-sdk');
+var rimraf = require('rimraf');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -36,15 +37,21 @@ module.exports = class extends Generator {
       this.options.destWrite,
       this.options.compagnyName,
       'dist')
-    this.fs.delete(path.join(dest, '*'));
+    this.log('Delete old application')
+    rimraf(dest, function () { console.log('Delete old application finished'); });
+
+
+    this.log('Copy web application')
     this.fs.copy(
       this.templatePath(src),
       this.destinationPath(dest)
     );
+    this.log('Copy Dockerfile')
     this.fs.copy(
       this.templatePath(path.join(this.sourceRoot(), 'Dockerfile')),
       this.destinationPath(path.join(this.options.destWrite, this.options.compagnyName, 'Dockerfile'))
     );
+    this.log('Copy nginx conf')
     this.fs.copy(
       this.templatePath(path.join(this.sourceRoot(), 'nginx')),
       this.destinationPath(path.join(this.options.destWrite, this.options.compagnyName, 'nginx'))
@@ -86,7 +93,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['rmi', 'pushmyshop/compagny' + this.options.compagnyId],
+      ['rm', this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com'],
       {
         cwd: path.join(
           this.options.destWrite,
@@ -94,7 +101,7 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['build', '-t', 'pushmyshop/compagny' + this.options.compagnyId, '.'],
+      ['rmi', 'pushmyshop/compagny_' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,
@@ -102,7 +109,27 @@ module.exports = class extends Generator {
       });
     this.spawnCommandSync(
       'docker',
-      ['run', '-d', '-e', 'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com', '--name', this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com', '--net', 'pushmyshopdocker_pushmyshop', 'pushmyshop/compagny' + this.options.compagnyId],
+      ['build', '-t', 'pushmyshop/compagny_' + this.options.compagnyId, '.'],
+      {
+        cwd: path.join(
+          this.options.destWrite,
+          this.options.compagnyName)
+      });
+    this.spawnCommandSync(
+      'docker',
+      ['run',
+        '-d',
+        '--restart=always',
+        '-e',
+        'VIRTUAL_HOST=' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com',
+        '--name', this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com',
+        '--net',
+        'pushmyshopdocker_pushmyshop',
+        '-e',
+        'LETSENCRYPT_HOST=' + this.options.compagnyName.replace(/ /g, '').toLowerCase() + '.pushmyshop.com',
+        '-e',
+        'LETSENCRYPT_EMAIL=contact.pushmyshop@gmail.com',
+        'pushmyshop/compagny_' + this.options.compagnyId],
       {
         cwd: path.join(
           this.options.destWrite,
