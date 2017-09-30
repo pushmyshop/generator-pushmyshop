@@ -13,9 +13,6 @@
         },
         "/cart": {
           "match": "exact"
-        },
-        "^/.*$": {
-          "match": "regex"
         }
       }
     },

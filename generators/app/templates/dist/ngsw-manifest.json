@@ -10,9 +10,6 @@
       },
       "/cart": {
         "match": "exact"
-      },
-      "^/.*$": {
-        "match": "regex"
       }
     }
   },
@@ -63,15 +60,16 @@
     "urls": {
       "/fontello.42641586af6054f0f7e6.svg": "cca4d25992ee5a9b9266e443ae46ae55819dd490",
       "/fontello.078f910f70a2e032f1b6.eot": "934684f6e6fac5513093927ededac9cade875d30",
-      "/polyfills.b59a8422e26e64d12be4.bundle.js": "582fbc34b3a6f7c9ae7401816ebf8d5297c7865c",
-      "/main.003d6064a8845092e3c2.bundle.js": "a46c9fc8c20e506c0e8016362fca958ab2f46cd2",
+      "/polyfills.c9b879328f3396b2bbe8.bundle.js": "f00c8e2e8fdb6dfab76c1ab43efb7fa3be20f4d6",
+      "/main.dd8cfed5685f2b5cc030.bundle.js": "458e19ee329ba04feb472c3ef81a242b27b3bbc5",
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
-      "/inline.f6a094b61723adf6d337.bundle.js": "8595c3a8744cdef13566248943b9a22104942178",
+      "/vendor.f902d3673f92a67df663.bundle.js": "4a6c7177d67128d382fe7879f0e8810e182b39bc",
+      "/inline.fecec855364919a78850.bundle.js": "f644ac4bd0d136b06fed704ab196a6ba87405b87",
       "/styles.36865f6ec8d61332f0e0.bundle.css": "df931725ef5ccb72e816f40011f355e9fd7e9d3e",
-      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
       "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
       "/manifest.json": "61c63d5ed7d2a73dacf10753d6b5ec7b1cb9d1f2",
-      "/index.html": "5e7d2f94b868fd81d033caad50564690ad445e99"
+      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
+      "/index.html": "1f769c870d157d858e9d198cce00a9ea2dd4edd7"
     },
     "_generatedFromWebpack": true
   }
