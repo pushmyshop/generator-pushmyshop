@@ -1,0 +1,78 @@
+{
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "match": "exact"
+      },
+      "/product": {
+        "match": "exact"
+      },
+      "/cart": {
+        "match": "exact"
+      },
+      "^/.*$": {
+        "match": "regex"
+      }
+    }
+  },
+  "external": {
+    "urls": [
+      {
+        "url": "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      }
+    ]
+  },
+  "dynamic": {
+    "group": [
+      {
+        "name": "company",
+        "urls": {
+          ".*/api/compagnies/(0|[1-9][0-9]*)$": {
+            "match": "regex"
+          }
+        },
+        "cache": {
+          "optimizeFor": "performance",
+          "strategy": "lru",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2
+        }
+      },
+      {
+        "name": "products",
+        "urls": {
+          ".*/api/compagnies/(0|[1-9][0-9]*)/products$": {
+            "match": "regex"
+          }
+        },
+        "cache": {
+          "optimizeFor": "performance",
+          "strategy": "lru",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2
+        }
+      }
+    ]
+  },
+  "push": {
+    "showNotifications": true,
+    "backgroundOnly": false
+  },
+  "static": {
+    "urls": {
+      "/fontello.42641586af6054f0f7e6.svg": "cca4d25992ee5a9b9266e443ae46ae55819dd490",
+      "/fontello.078f910f70a2e032f1b6.eot": "934684f6e6fac5513093927ededac9cade875d30",
+      "/polyfills.b59a8422e26e64d12be4.bundle.js": "582fbc34b3a6f7c9ae7401816ebf8d5297c7865c",
+      "/main.003d6064a8845092e3c2.bundle.js": "a46c9fc8c20e506c0e8016362fca958ab2f46cd2",
+      "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
+      "/inline.f6a094b61723adf6d337.bundle.js": "8595c3a8744cdef13566248943b9a22104942178",
+      "/styles.36865f6ec8d61332f0e0.bundle.css": "df931725ef5ccb72e816f40011f355e9fd7e9d3e",
+      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
+      "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+      "/manifest.json": "61c63d5ed7d2a73dacf10753d6b5ec7b1cb9d1f2",
+      "/index.html": "5e7d2f94b868fd81d033caad50564690ad445e99"
+    },
+    "_generatedFromWebpack": true
+  }
+}
