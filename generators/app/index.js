@@ -37,8 +37,11 @@ module.exports = class extends Generator {
       this.options.destWrite,
       this.options.compagnyName,
       'dist')
+    var toDelete = path.join(
+      this.options.destWrite,
+      this.options.compagnyName)
     this.log('Delete old application')
-    rimraf(dest, function () { console.log('Delete old application finished'); });
+    rimraf(toDelete, function () { console.log('Delete old application finished'); });
 
 
     this.log('Copy web application')
