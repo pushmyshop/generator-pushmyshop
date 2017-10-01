@@ -16,15 +16,15 @@ module.exports = class extends Generator {
       type: Number,
       required: true
     });
-    this.argument('compagnyName', {
-      type: String,
-      required: true
-    });
     this.argument('compagnyLogo', {
       type: String,
       required: true
     });
     this.argument('compagnyImage', {
+      type: String,
+      required: true
+    });
+    this.argument('compagnyName', {
       type: String,
       required: true
     });
