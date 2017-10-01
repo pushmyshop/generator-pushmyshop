@@ -51,7 +51,7 @@ module.exports = class extends Generator {
       this.options.destWrite,
       this.options.compagnyName)
     this.log('Delete old application')
-    rimraf(toDelete, function () { console.log('Delete old application finished'); });
+    rimraf.sync(toDelete);
 
 
     this.log('Copy web application')
