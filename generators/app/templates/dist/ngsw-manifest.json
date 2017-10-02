@@ -71,11 +71,10 @@
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
       "/vendor.f902d3673f92a67df663.bundle.js": "4a6c7177d67128d382fe7879f0e8810e182b39bc",
       "/inline.fecec855364919a78850.bundle.js": "f644ac4bd0d136b06fed704ab196a6ba87405b87",
-      "/styles.696d5d29b6093adc7405.bundle.css": "3af7cca7924075daa99912c430491480fa33d8fd",
+      "/styles.732c0c95d9c91ce69eed.bundle.css": "b5cb99d5d38a5d98bba855f35dc34142d77fbc75",
       "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
-      "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
       "/manifest.json": "f7933910a6afee081b35d0a3ae3cd6821f9efa79",
-      "/index.html": "1b03918ba44baa4c06bd73d0dd3d18643b797a8d"
+      "/index.html": "5c3caf933f9f5cb440020616654c3c88a97568ff"
     },
     "_generatedFromWebpack": true
   }
