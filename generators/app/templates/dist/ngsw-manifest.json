@@ -67,14 +67,14 @@
       "/fontello.42641586af6054f0f7e6.svg": "cca4d25992ee5a9b9266e443ae46ae55819dd490",
       "/fontello.078f910f70a2e032f1b6.eot": "934684f6e6fac5513093927ededac9cade875d30",
       "/polyfills.c9b879328f3396b2bbe8.bundle.js": "f00c8e2e8fdb6dfab76c1ab43efb7fa3be20f4d6",
-      "/main.dd8cfed5685f2b5cc030.bundle.js": "458e19ee329ba04feb472c3ef81a242b27b3bbc5",
+      "/main.548a6c3713ed0ee05582.bundle.js": "e32ec4141b4db51ee863b379143a5f3fe7d00343",
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
-      "/vendor.f902d3673f92a67df663.bundle.js": "4a6c7177d67128d382fe7879f0e8810e182b39bc",
-      "/inline.fecec855364919a78850.bundle.js": "f644ac4bd0d136b06fed704ab196a6ba87405b87",
-      "/styles.732c0c95d9c91ce69eed.bundle.css": "b5cb99d5d38a5d98bba855f35dc34142d77fbc75",
-      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
+      "/vendor.a528b2601e025208dac8.bundle.js": "525a046a06d7991ba1adad121906424e9af32502",
+      "/inline.195917ea847f76d366ae.bundle.js": "ba77f489c75d104403575944a1d873a8714093c3",
+      "/styles.f9610d51c0c371904839.bundle.css": "a2706c7f7f861867747cf8b9856eb97c50ee32a7",
       "/manifest.json": "f7933910a6afee081b35d0a3ae3cd6821f9efa79",
-      "/index.html": "5c3caf933f9f5cb440020616654c3c88a97568ff"
+      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
+      "/index.html": "fe81a2cd9c679f9342f6d74daea54060b5c79665"
     },
     "_generatedFromWebpack": true
   }

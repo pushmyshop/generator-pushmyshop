@@ -31,7 +31,7 @@ export class CartService {
 
   addProduct(product : Product) : Promise<Cart> {
     return this.getCart().then(cart => {
-      return this.addProductTo(cart, product);
+      return this.addProductTo(cart, product, true);
     })
   }
 
@@ -84,7 +84,7 @@ export class CartService {
     return Promise.resolve(currentCart);
   }
 
-  private addProductTo(cart: Cart, product : Product): Promise<Cart>{
+  private addProductTo(cart: Cart, product : Product, firstTry): Promise<Cart>{
     return this.http.post(environment.compagnyUrl+'/carts/'+cart.id+'/product', JSON.stringify(product), { headers: this.headers } )
     .map( res => {
       let cart = res.json() as Cart;
@@ -94,7 +94,11 @@ export class CartService {
     })
     .toPromise()
     .catch( error => {
-      console.error( 'Could not add product to cart', error );
+      if(firstTry) {
+        return this.create().then(cart => {
+          return this.addProductTo(cart, product, false);
+        })
+      }
       return Promise.reject( error.message || error );
     } );
   }

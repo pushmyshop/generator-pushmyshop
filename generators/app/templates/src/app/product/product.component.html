@@ -9,7 +9,7 @@
         <span *ngIf="compagny.addressLine2">{{compagny.addressLine2}} <br/></span>
         <span *ngIf="compagny.addressLine3">{{compagny.addressLine3}} <br/></span>
         {{compagny.postalCode}} - {{compagny.town}} <br/>
-        {{compagny.telephoneNumber}} <br/>
+        {{compagny.telephoneNumber}} (<a href="tel://{{compagny.telephoneNumber}}"> Appeler</a>) <br/>
         {{compagny.emailAddress}}
       </p>
     </div>

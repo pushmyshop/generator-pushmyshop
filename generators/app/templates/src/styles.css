@@ -14,3 +14,11 @@ md-icon {
   -ms-user-select: none;
   user-select: none;
 }
+
+a[href^="tel:"]{
+  text-decoration: none;
+  color: inherit;
+}
+a[href^="tel:"]:before {
+  content: "\260E";
+}
