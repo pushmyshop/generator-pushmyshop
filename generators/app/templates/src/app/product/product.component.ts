@@ -44,6 +44,7 @@ export class ProductComponent implements OnInit {
 
   private openDialog(product : Product): void {
     let dialogRef = this.dialog.open(ProductAddedDialog, {
+      width: '50%',
       data: { name: product.name }
     });
   }

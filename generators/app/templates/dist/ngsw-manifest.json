@@ -67,14 +67,14 @@
       "/fontello.42641586af6054f0f7e6.svg": "cca4d25992ee5a9b9266e443ae46ae55819dd490",
       "/fontello.078f910f70a2e032f1b6.eot": "934684f6e6fac5513093927ededac9cade875d30",
       "/polyfills.c9b879328f3396b2bbe8.bundle.js": "f00c8e2e8fdb6dfab76c1ab43efb7fa3be20f4d6",
-      "/main.2b452d9ca19f638397af.bundle.js": "92357d97c3ec9c08876a462129dec963cbad84e7",
+      "/main.548a6c3713ed0ee05582.bundle.js": "e32ec4141b4db51ee863b379143a5f3fe7d00343",
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
-      "/vendor.57b22332cf7c2168c13a.bundle.js": "8d940d5eae3393b33b9d7a43db6c8338bc8c1642",
-      "/inline.900be46ba9160c4e3b63.bundle.js": "78a643e1e93eec73ee07f75fd0071faa083defd0",
+      "/vendor.a528b2601e025208dac8.bundle.js": "525a046a06d7991ba1adad121906424e9af32502",
+      "/inline.195917ea847f76d366ae.bundle.js": "ba77f489c75d104403575944a1d873a8714093c3",
       "/styles.f9610d51c0c371904839.bundle.css": "a2706c7f7f861867747cf8b9856eb97c50ee32a7",
-      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
       "/manifest.json": "f7933910a6afee081b35d0a3ae3cd6821f9efa79",
-      "/index.html": "138acc65d54ea83f083a29f68925b652d40195f7"
+      "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
+      "/index.html": "fe81a2cd9c679f9342f6d74daea54060b5c79665"
     },
     "_generatedFromWebpack": true
   }
