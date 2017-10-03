@@ -72,9 +72,9 @@
       "/vendor.a528b2601e025208dac8.bundle.js": "525a046a06d7991ba1adad121906424e9af32502",
       "/inline.195917ea847f76d366ae.bundle.js": "ba77f489c75d104403575944a1d873a8714093c3",
       "/styles.f9610d51c0c371904839.bundle.css": "a2706c7f7f861867747cf8b9856eb97c50ee32a7",
-      "/manifest.json": "f7933910a6afee081b35d0a3ae3cd6821f9efa79",
       "/assets/images/pizza.png": "6e96ee3cdf4a2350bd9a692305da80104ce019cc",
-      "/index.html": "fe81a2cd9c679f9342f6d74daea54060b5c79665"
+      "/manifest.json": "f7933910a6afee081b35d0a3ae3cd6821f9efa79",
+      "/index.html": "1e6908d33f0ba2ed15630f89ac4536a45f8496fd"
     },
     "_generatedFromWebpack": true
   }
