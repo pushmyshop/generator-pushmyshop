@@ -18,6 +18,7 @@ import {PushService} from "./service/push.service";
 import {MaterialModule} from "./material.module";
 import {OrderDialog} from "./order/order.component";
 import {OfflineDialog} from "./offline/offline.component";
+import {Angulartics2GoogleTagManager, Angulartics2Module} from "angulartics2";
 
 
 export const routes: Routes = [
@@ -45,7 +46,8 @@ export const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
   providers: [
     CompagnyService,

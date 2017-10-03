@@ -3,6 +3,7 @@ import {Cart} from './model/cart'
 import {CartService} from './service/cart.service'
 import {Compagny} from "./model/compagny";
 import {CompagnyService} from "./service/compagny.service";
+import {Angulartics2GoogleTagManager} from "angulartics2";
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,15 @@ export class AppComponent implements OnInit {
   cart : Cart;
   compagny: Compagny;
 
-  constructor(private cartService : CartService, private compagnyService: CompagnyService){ }
+  constructor(private _cartService : CartService
+              , private _compagnyService: CompagnyService
+              , private _angulartics2GoogleTagManager: Angulartics2GoogleTagManager)//necessary to hook the router for analytics
+  { }
 
   ngOnInit() {
-    this.compagnyService.current.subscribe(compagny => this.compagny = compagny);
-    this.compagnyService.init();
-    this.cartService.current.subscribe(cart => this.cart = cart);
-    this.cartService.init();
+    this._compagnyService.current.subscribe(compagny => this.compagny = compagny);
+    this._compagnyService.init();
+    this._cartService.current.subscribe(cart => this.cart = cart);
+    this._cartService.init();
   }
 }
